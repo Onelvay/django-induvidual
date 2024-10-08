@@ -1,0 +1,25 @@
+<h1>Редактирование профиля</h1>
+
+<form method="POST">
+    {% csrf_token %}  <!-- Токен защиты CSRF должен быть внутри формы -->
+    
+    <!-- Отображение ошибок, если есть -->
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% if field.errors %}
+                    <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                {% endif %}
+            {% endfor %}
+            {% if form.non_field_errors %}
+                <li>{{ form.non_field_errors }}</li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    
+    <!-- Отображение полей формы -->
+    {{ form.as_p }}
+
+    <!-- Кнопка для сохранения изменений -->
+    <button type="submit">Сохранить изменения</button>
+</form>

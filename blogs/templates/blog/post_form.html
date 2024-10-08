@@ -1,0 +1,7 @@
+<h1>Создать новый пост</h1>
+
+<form method="POST">
+    {% csrf_token %}  <!-- Это добавляет CSRF-токен -->
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>

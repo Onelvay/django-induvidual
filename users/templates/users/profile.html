@@ -1,0 +1,11 @@
+<h1>Профиль пользователя {{ user.username }}</h1>
+<p>Биография: {{ user.profile.bio }}</p>
+
+<!-- Проверяем, есть ли изображение профиля -->
+{% if user.profile.profile_picture %}
+    <p>Фото профиля: <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture"></p>
+{% else %}
+    <p>Фото профиля: <img src="/path/to/default/image.jpg" alt="Default Profile Picture"></p>  <!-- Путь к изображению по умолчанию -->
+{% endif %}
+
+<a href="{% url 'profile_edit' %}?user_id={{ user.id }}">Редактировать профиль</a>

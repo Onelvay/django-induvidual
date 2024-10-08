@@ -1,0 +1,12 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p>Автор: {{ post.author.username }}</p>
+<h2>Комментарии</h2>
+<ul>
+    {% for comment in comments %}
+        <li>{{ comment.content }} - {{ comment.author.username }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_comment' post.id %}">Добавить комментарий</a>
+<a href="{% url 'post_edit' post.pk %}">Редактировать пост</a>
+<a href="{% url 'post_delete' post.pk %}">Удалить пост</a>
